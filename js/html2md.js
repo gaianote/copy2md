@@ -69,31 +69,3 @@ var replace = function(outerHTML,result,item){
 }
 
 
-html = `<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">url_for</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@app.route</span><span class="p">(</span><span class="s">'/'</span><span class="p">)</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">index</span><span class="p">():</span> <span class="k">pass</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@app.route</span><span class="p">(</span><span class="s">'/login'</span><span class="p">)</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">login</span><span class="p">():</span> <span class="k">pass</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nd">@app.route</span><span class="p">(</span><span class="s">'/user/&lt;username&gt;'</span><span class="p">)</span>
-<span class="gp">... </span><span class="k">def</span> <span class="nf">profile</span><span class="p">(</span><span class="n">username</span><span class="p">):</span> <span class="k">pass</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">app</span><span class="o">.</span><span class="n">test_request_context</span><span class="p">():</span>
-<span class="gp">... </span> <span class="k">print</span> <span class="n">url_for</span><span class="p">(</span><span class="s">'index'</span><span class="p">)</span>
-<span class="gp">... </span> <span class="k">print</span> <span class="n">url_for</span><span class="p">(</span><span class="s">'login'</span><span class="p">)</span>
-<span class="gp">... </span> <span class="k">print</span> <span class="n">url_for</span><span class="p">(</span><span class="s">'login'</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="s">'/'</span><span class="p">)</span>
-<span class="gp">... </span> <span class="k">print</span> <span class="n">url_for</span><span class="p">(</span><span class="s">'profile'</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s">'John Doe'</span><span class="p">)</span>
-<span class="gp">...</span>
-<span class="go">/</span>
-<span class="go">/login</span>
-<span class="go">/login?next=/</span>
-<span class="go">/user/John%20Doe</span>
-</pre></div>
-</div>`
-
-
-
-
-console.log(html2md(html))
