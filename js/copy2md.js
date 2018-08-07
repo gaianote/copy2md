@@ -34,8 +34,10 @@ var get_sel_elems = function(){
   //https://developer.mozilla.org/zh-CN/docs/Web/API/Selection
 
   var  selObj = window.getSelection()
-  var  anchor_elem = selObj.anchorNode.parentElement
-  var  focus_elem = selObj.focusNode.parentElement
+  var anchor_elem = selObj.anchorNode
+  var focus_elem = selObj.focusNode
+  if(anchor_elem.nodeName == '#text'){anchor_elem = anchor_elem.parentElement}
+  if(focus_elem.nodeName == '#text'){focus_elem = focus_elem.parentElement}
   //特殊处理anchorNode并排序
   if(anchor_elem.getBoundingClientRect().top < focus_elem.getBoundingClientRect().top){
     start_elem = anchor_elem
@@ -78,6 +80,7 @@ var get_sel_elems = function(){
 
   //清除重复出现的子元素
   sel_elems = remove_elems(sel_elems)
+  console.log(sel_elems)
   //得到outerHTMl
   for(var i=0;i<sel_elems.length;i++){
     sel_elems[i] = sel_elems[i].outerHTML

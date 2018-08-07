@@ -11,6 +11,9 @@ var param_html = function(outerHTML,tagname){
     tag_end = '(</' + tagname + '>)'
     reg = tag_start + tag_content + tag_end
     //reg 如果加了g 就无法再捕获分组了,会返回所有匹配到的结果(resule[0])
+    if(tagname == 'img'){
+      reg = '(<img [\\s\\S]*?>)'
+    }
     return new RegExp(reg,rule)
   }
 
@@ -32,6 +35,18 @@ var param_html = function(outerHTML,tagname){
     elems_outerHTML = outerHTML.match(get_tag_reg(tagname,'g'))
     elems = []
     if (elems_outerHTML == null) return null;
+    if(tagname == 'img'){
+      for (elem_outerHTML of elems_outerHTML){
+        elem_info = elem_outerHTML.match(get_tag_reg(tagname))
+        elem = {}
+        elem.outerHTML = elem_info[0]
+        elem.tag = {}
+        elem.tag.start = elem_info[0]
+        elem.attr = get_tag_attr(elem.tag.start)
+        elems.push(elem)
+      }
+      return elems
+    }
     for (elem_outerHTML of elems_outerHTML){
       elem_info = elem_outerHTML.match(get_tag_reg(tagname))
       elem = {}
@@ -96,7 +111,7 @@ var html2md = function(html){
     }
     else if(tagname == 'img'){
       for (var elem of param_html(html,tagname)){
-        markdown = '[img]('+ elem.attr.src +')'
+        markdown = '![img]('+ elem.attr.src +')\n'
         html = html.replace(elem.outerHTML,markdown)
       }
     }
