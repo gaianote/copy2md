@@ -17,13 +17,19 @@
 
 
 ```
-echo "# copy2md" &gt;&gt; README.mdgit initgit add README.mdgit commit -m "first commit"git remote add origin git@github.com:gaianote/copy2md.gitgit push -u origin master
+echo "# copy2md" &gt;&gt; README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin
+git@github.com:gaianote/copy2md.gitgit push -u origin master
 ```
 
 ### …or push an existing repository from the command line
 
 ```
-git remote add origin git@github.com:gaianote/copy2md.gitgit push -u origin master
+git remote add origin
+git@github.com:gaianote/copy2md.gitgit push -u origin master
 ```
 
 ### …or import code from another repository
